@@ -24,13 +24,13 @@ app = Flask(__name__)
 def root():
     return 'Welcome to the "Distributed Load Testing Using Kubernetes" sample web app\n'
 
-@app.route('/login',  methods=['GET', 'POST'])
-def login():
+@app.route('/loginagain',  methods=['GET', 'POST'])
+def loginagain():
     deviceid = request.values.get('deviceid')
-    return '/login - device: {}\n'.format(deviceid)
+    return '/loginagain - device: {}\n'.format(deviceid)
 
-@app.route('/metrics',  methods=['GET', 'POST'])
-def metrics():
+@app.route('/metricss',  methods=['GET', 'POST'])
+def metricss():
     deviceid = request.values.get('deviceid')
     timestamp = request.values.get('timestamp')
     

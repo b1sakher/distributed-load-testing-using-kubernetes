@@ -28,9 +28,9 @@ class MetricsTaskSet(TaskSet):
         self._deviceid = str(uuid.uuid4())
 
     @task(1)
-    def login(self):
+    def loginagain(self):
         self.client.post(
-            '/login', {"deviceid": self._deviceid})
+            '/loginagain', {"deviceid": self._deviceid})
 
     @task(999)
     def post_metrics(self):
