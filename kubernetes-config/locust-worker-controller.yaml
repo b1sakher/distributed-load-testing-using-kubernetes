@@ -30,11 +30,11 @@ spec:
     spec:
       containers:
         - name: locust-worker
-          image: gcr.io/[PROJECT_ID]/locust-tasks:latest
+          image: gcr.io/arise-242614/locust-tasks:latest
           env:
             - name: LOCUST_MODE
               value: worker
             - name: LOCUST_MASTER
               value: locust-master
             - name: TARGET_HOST
-              value: https://[TARGET_HOST]
+              value: http://35.233.83.59:5000/
