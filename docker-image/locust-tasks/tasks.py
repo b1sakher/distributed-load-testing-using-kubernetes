@@ -28,14 +28,12 @@ class MetricsTaskSet(TaskSet):
         self._deviceid = str(uuid.uuid4())
 
     @task(1)
-    def loginagain(self):
-        self.client.post(
-            '/loginagain', {"deviceid": self._deviceid})
+    def index(self):
+        self.client.get('/')
 
-    @task(999)
-    def post_metrics(self):
-        self.client.post(
-            "/metrics", {"deviceid": self._deviceid, "timestamp": datetime.now()})
+    @task(1)
+    def test_load(self):
+        self.client.get("/test")
 
 
 class MetricsLocust(HttpLocust):
