@@ -18,8 +18,7 @@
 import uuid, json
 
 from datetime import datetime
-from locust import HttpLocust, TaskSet, task
-
+from locust import HttpLocust, TaskSet, task, between
 
 class MetricsTaskSet(TaskSet):
     _deviceid = None
@@ -31,7 +30,7 @@ class MetricsTaskSet(TaskSet):
     def test_root(self):
         self.client.get('/')
 
-    @task(1)
+    @task(5)
     def test_load(self):
         with open('json_input.json') as f:
             d = json.load(f)
@@ -43,3 +42,4 @@ class MetricsTaskSet(TaskSet):
 
 class MetricsLocust(HttpLocust):
     task_set = MetricsTaskSet
+    wait_time = between(5, 10)
