@@ -15,7 +15,7 @@
 # limitations under the License.
 
 
-import uuid
+import uuid, json
 
 from datetime import datetime
 from locust import HttpLocust, TaskSet, task
@@ -27,10 +27,18 @@ class MetricsTaskSet(TaskSet):
     def on_start(self):
         self._deviceid = str(uuid.uuid4())
 
+    @task(1)
+    def test_root(self):
+        self.client.get('/')
 
     @task(1)
     def test_load(self):
-        self.client.get("/test")
+        with open('json_input.json') as f:
+            d = json.load(f)
+            e = json.dumps(d)
+        data = {'json': e}
+        response = self.client.post("/detect-boundaries-gps-test", data=data, follow_redirects=True,
+                                    content_type='multipart/form-data')
 
 
 class MetricsLocust(HttpLocust):
