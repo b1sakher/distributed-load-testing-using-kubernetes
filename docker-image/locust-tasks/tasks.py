@@ -27,9 +27,6 @@ class MetricsTaskSet(TaskSet):
     def on_start(self):
         self._deviceid = str(uuid.uuid4())
 
-    @task(1)
-    def index(self):
-        self.client.get('/')
 
     @task(1)
     def test_load(self):
