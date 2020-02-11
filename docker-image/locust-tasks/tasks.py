@@ -15,10 +15,11 @@
 # limitations under the License.
 
 
-import uuid, json
+import uuid
 
 from datetime import datetime
-from locust import HttpLocust, TaskSet, task, between
+from random import randint
+from locust import HttpLocust, TaskSet, task
 
 class MetricsTaskSet(TaskSet):
     _deviceid = None
@@ -52,4 +53,4 @@ class MetricsTaskSet(TaskSet):
 
 class MetricsLocust(HttpLocust):
     task_set = MetricsTaskSet
-    wait_time = 6
+    wait_time = randint(5, 15)
