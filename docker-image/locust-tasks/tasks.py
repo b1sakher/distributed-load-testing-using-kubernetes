@@ -52,4 +52,4 @@ class MetricsTaskSet(TaskSet):
 
 class MetricsLocust(HttpLocust):
     task_set = MetricsTaskSet
-    wait_time = between(5, 10)
+    wait_time = 6
