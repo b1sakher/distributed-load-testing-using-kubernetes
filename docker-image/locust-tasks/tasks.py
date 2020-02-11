@@ -47,8 +47,7 @@ class MetricsTaskSet(TaskSet):
                    '		"lat": 51.261076,		"long": 6.733260	},	"user_position": {		"lat": 51.260778,' \
                    '		"long": 6.733281	},	"width": 1280}'
         data = {'json': json_str}
-        self.client.post("/detect-boundaries-gps-test", data=data, follow_redirects=True,
-                                    content_type='multipart/form-data')
+        self.client.post("/detect-boundaries-gps-test", data=data, content_type='multipart/form-data')
 
 
 class MetricsLocust(HttpLocust):
