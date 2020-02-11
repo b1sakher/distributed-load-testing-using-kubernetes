@@ -25,6 +25,7 @@ ADD locust-tasks /locust-tasks
 # Install the required dependencies via pip
 RUN pip install -r /locust-tasks/requirements.txt
 
+RUN pip install pyopenssl ndg-httpsclient pyasn1
 # Expose the required Locust ports
 EXPOSE 5557 5558 8089
 
