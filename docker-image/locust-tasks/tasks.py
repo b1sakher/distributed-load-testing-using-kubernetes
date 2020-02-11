@@ -37,17 +37,10 @@ class MetricsTaskSet(TaskSet):
         #    d = json.load(f)
         #   e = json.dumps(d)
 
-        json_str = '{"fx": 1024.6653,	"fy": 1023.67645,	"height": 720,	"pitch_box_height": 40.3,' \
-                   '	"pitch_box_width": 16.5,	"pitch_height": 66.0,	"pitch_width": 104.6,' \
-                   '	"origin_point": "e", "stadium_a": {		"lat": 51.262193,		"long": 6.733061	},' \
-                   '        	"stadium_b": {		"lat": 51.261808,		"long": 6.732308	}, "stadium_c": {' \
-                   '		"lat": 51.261828,		"long": 6.733535	},	"stadium_center": {		"lat": 51.261636,' \
-                   '		"long": 6.733158	},	"stadium_d": {		"lat": 51.261445,		"long": 6.732780' \
-                   '	},	"stadium_e": {		"lat": 51.261465,		"long": 6.734012	},	"stadium_f": {' \
-                   '		"lat": 51.261076,		"long": 6.733260	},	"user_position": {		"lat": 51.260778,' \
-                   '		"long": 6.733281	},	"width": 1280}'
+        json_str = '{"fx": 1024.6653,"fy": 1023.67645,"height": 720,"pitch_box_height": 40.3,"pitch_box_width": 16.5,"pitch_height": 66.0,"pitch_width": 104.6,"origin_point": "e", "stadium_a": {"lat": 51.262193,"long": 6.733061},        "stadium_b": {"lat": 51.261808,"long": 6.732308}, "stadium_c": {"lat": 51.261828,"long": 6.733535},"stadium_center": {"lat": 51.261636,"long": 6.733158},"stadium_d": {"lat": 51.261445,"long": 6.732780},"stadium_e": {"lat": 51.261465,"long": 6.734012},"stadium_f": {"lat": 51.261076,"long": 6.733260},"user_position": {"lat": 51.260778,"long": 6.733281},"width": 1280}'
         data = {'json': json_str}
-        self.client.post("/detect-boundaries-gps-test", data=data, content_type='multipart/form-data')
+        response = self.client.post("/detect-boundaries-gps-test", data=data, follow_redirects=True,
+                                    content_type='multipart/form-data')
 
 
 class MetricsLocust(HttpLocust):
