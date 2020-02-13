@@ -48,4 +48,4 @@ class MetricsTaskSet(TaskSet):
 
 class MetricsLocust(HttpLocust):
     task_set = MetricsTaskSet
-    wait_time = randint(5, 15)
+    wait_time = 15
