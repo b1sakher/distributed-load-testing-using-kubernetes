@@ -37,4 +37,4 @@ spec:
             - name: LOCUST_MASTER
               value: locust-master
             - name: TARGET_HOST
-              value: http://35.240.13.101:5000/
+              value: http://35.240.51.67:5000/
